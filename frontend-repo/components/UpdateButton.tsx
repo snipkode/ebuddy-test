@@ -15,7 +15,7 @@ const UpdateButton = () => {
       dispatch(fetchUserDataSuccess(data));
     } catch (error) {
       if (error instanceof Error) {
-        dispatch(fetchUserDataError('something went wrong'));
+        dispatch(fetchUserDataError(error.message));
       } else {
         dispatch(fetchUserDataError('An unknown error occurred'));
       }
