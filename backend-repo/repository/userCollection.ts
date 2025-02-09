@@ -1,5 +1,5 @@
-import { admin } from '@/config/firebaseConfig';
-import { User } from '@/entities/user';
+import { admin } from '../config/firebaseConfig';
+import { User } from '../entities/user';
 
 export const updateUser = async (userId: string, userData: Partial<User>) => {
   await admin.firestore().collection('USERS').doc(userId).set(userData, { merge: true });

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { updateUser, fetchUser } from '@/repository/userCollection';
+import { updateUser, fetchUser } from '../repository/userCollection';
 
 export const updateUserData = async (req: Request, res: Response) => {
   const { userId, userData } = req.body;

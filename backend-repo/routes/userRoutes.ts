@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { updateUserData, fetchUserData } from '@/controller/api';
-import authMiddleware from '@/middleware/authMiddleware';
+import { updateUserData, fetchUserData } from '../controller/api';
+import authMiddleware from '../middleware/authMiddleware';
 
 const router = Router();
 
