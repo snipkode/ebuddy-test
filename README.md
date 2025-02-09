@@ -97,5 +97,38 @@ npx turbo run dev
 - API calls require a **dummy token** for authentication instead of Firebase Admin token double-checking.
 
 ---
+
 Happy coding! 🚀
+
+## Question Interview 
+
+1. **What are the most difficult technical problems in your work experience you have encountered and how do you fix them?**  
+   One of the most challenging technical problems I faced was optimizing the performance of a React/Next.js application that had slow page loads due to large API responses and inefficient state management. I resolved this by implementing server-side rendering (SSR) for critical pages, using React Query for efficient data fetching and caching, and optimizing API responses by reducing unnecessary data. These improvements significantly enhanced the app’s performance and user experience.  
+
+2. **When you’re working on a project, how do you typically approach it from start to finish?**  
+   My approach follows these steps:  
+   - **Understanding Requirements:** I clarify the project scope and expectations.  
+   - **Planning:** I break down tasks, set priorities, and establish a timeline.  
+   - **Development:** I build the project iteratively, ensuring modular and maintainable code.  
+   - **Testing & Optimization:** I conduct testing (unit/integration testing) and optimize performance.  
+   - **Deployment & Feedback:** I deploy the project, gather feedback, and make necessary refinements.  
+
+3. **How do you usually approach learning a new topic to absorb as much as possible?**  
+   I follow a structured learning approach:  
+   - Start with official documentation and tutorials.  
+   - Apply concepts through small projects or real-world implementations.  
+   - Engage in community discussions (forums, GitHub, Discord).  
+   - Teach or create content (blog, YouTube videos) to reinforce learning.  
+
+4. **“Consistency” vs “Fast & Efficient”. Choose one.**  
+   **Consistency.** I believe sustainable progress and high-quality work come from maintaining a consistent workflow, which leads to long-term efficiency.  
+
+5. **Do you own any Apple products? Like iMac, MacBook, iPad, iPhone, etc.?**  
+   Yes, I use a MacBook 2015, Windows 11 OS and Iphone 15 Pro Max for development due to its seamless integration with development tools, especially for web and mobile development.  
+
+6. **What is your immediate availability to start this job?**  
+   I am available to start immediately / within 1 week (adjust based on your situation).  
+
+
+
 
