@@ -2,13 +2,21 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", ".next/**"],
+      "cache": true
+    },
+    "dev": {
+      "dependsOn": ["^dev"],
+      "cache": false,
+      "persistent": true
     },
     "lint": {
-      "outputs": []
+      "cache": true
     },
     "test": {
-      "outputs": ["coverage/**"]
+      "dependsOn": ["build"],
+      "cache": true
     }
-  }
+  },
+  "globalDependencies": ["packages/shared"]
 }
