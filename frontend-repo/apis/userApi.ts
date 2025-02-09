@@ -8,10 +8,12 @@ export const fetchUserData = async () => {
   try {
     const auth = getAuth(app);
     const user = auth.currentUser;
-    if (!user) throw new Error('User not authenticated');
+    if (!user) {
+      throw new Error('User not authenticated');
+    }
 
     const db = getFirestore(app);
-    const usersCollection = collection(db, 'users');
+    const usersCollection = collection(db, 'USERS');
     const usersSnapshot = await getDocs(usersCollection);
 
     if (usersSnapshot.empty) throw new Error('No users found');

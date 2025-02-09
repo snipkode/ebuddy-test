@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, Container } from '@mui/material';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import firebaseApp from '@/firebase/firebaseConfig';
 
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <Container maxWidth="sm">
       <Typography variant="h4">Login</Typography>
       <TextField
         label="Email"
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
       <Button variant="contained" color="primary" onClick={handleLogin}>
         Login
       </Button>
-    </div>
+    </Container>
   );
 };
 
