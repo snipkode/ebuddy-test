@@ -1,0 +1,14 @@
+{
+  "packageManager": "npm@10.2.4",
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0"
+  },
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
+}
