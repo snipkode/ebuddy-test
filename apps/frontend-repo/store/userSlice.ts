@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 import { RootState } from "./store";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import firebaseApp from '@/firebase/firebaseConfig';
+import { collection, getDocs } from "firebase/firestore";
+import {auth, db} from '@/firebase/firebaseConfig';
 
 interface UserState {
   user: User | null;
@@ -34,13 +34,13 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async (_, { rejectWi
 
 export const fetchUserData = createAsyncThunk("user/fetchUserData", async (_, { rejectWithValue }) => {
   try {
-    const auth = getAuth(firebaseApp);
+    
     const user = auth.currentUser;
     if (!user) {
       throw new Error('User not authenticated');
     }
 
-    const db = getFirestore(firebaseApp);
+
     const usersCollection = collection(db, 'USERS');
     const usersSnapshot = await getDocs(usersCollection);
 

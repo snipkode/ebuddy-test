@@ -11,7 +11,7 @@ import { AppProps } from 'next/app';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setUser, setLoading } from "@/store/authSlice";
-import firebaseApp from '@/firebase/firebaseConfig';
+import {firebaseApp} from '@/firebase/firebaseConfig';
 
 
 const auth = getAuth(firebaseApp);

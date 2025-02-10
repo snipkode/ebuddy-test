@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container } from '@mui/material';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {signInWithEmailAndPassword } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import firebaseApp from '@/firebase/firebaseConfig';
+import {auth} from '@/firebase/firebaseConfig';
 import { fetchUser } from '@/store/userSlice';
 import { AppDispatch } from '@/store/store';
 
@@ -16,7 +16,6 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     setError('');
-    const auth = getAuth(firebaseApp);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       dispatch(fetchUser()); // Fetch user data after login
