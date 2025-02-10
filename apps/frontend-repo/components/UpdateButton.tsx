@@ -1,31 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Typography, CircularProgress, Box } from '@mui/material';
-import { fetchUserData } from '@/apis/userApi';
-import { fetchUserData as fetchUserDataAction, fetchUserDataSuccess, fetchUserDataError } from '@/store/actions';
-import { useRouter } from 'next/router';
+import { fetchUserData } from '@/store/userSlice'; // Use fetchUserData from Redux
+import { selectUserData, selectLoading, selectError } from '@/store/userSlice';
+import { AppDispatch } from '@/store/store'; 
 
 const UpdateButton = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { loading, data, error } = useSelector((state: { user: { loading: boolean; data: any; error: string } }) => state.user);
+  const dispatch = useDispatch<AppDispatch>();
+  const loading = useSelector(selectLoading);
+  const userData = useSelector(selectUserData);
+  const error = useSelector(selectError);
 
-  const handleClick = async () => {
-    dispatch(fetchUserDataAction({}));
-    try {
-      const data = await fetchUserData();
-      dispatch(fetchUserDataSuccess(data));
-    } catch (error) {
-      if (error instanceof Error) {
-        if (error.message === 'User not authenticated') {
-          router.push('/login');
-        } else {
-          dispatch(fetchUserDataError(error.message));
-        }
-      } else {
-        dispatch(fetchUserDataError('An unknown error occurred'));
-      }
-    }
+  const handleClick = () => {
+    dispatch(fetchUserData());
   };
 
   return (
@@ -34,16 +21,16 @@ const UpdateButton = () => {
         {loading ? <CircularProgress size={24} /> : 'Fetch User Data'}
       </Button>
       {loading && <Typography mt={2}>Loading...</Typography>}
-      {data && (
+      {userData && (
         <Box mt={2} width="100%">
           <Typography variant="h6">User Data:</Typography>
-          {Array.isArray(data) ? data.map((item, index) => (
+          {Array.isArray(userData) ? userData.map((item, index) => (
             <Box key={index} p={2} bgcolor="#fff" borderRadius={1} boxShadow={1} mt={1}>
               {JSON.stringify(item, null, 2)}
             </Box>
           )) : (
             <Box p={2} bgcolor="#fff" borderRadius={1} boxShadow={1} mt={1}>
-              {JSON.stringify(data, null, 2)}
+              {JSON.stringify(userData, null, 2)}
             </Box>
           )}
         </Box>
