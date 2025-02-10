@@ -102,6 +102,60 @@ npx turbo run dev
 
 ---
 
+### **Required Firestore Index**
+To support this query:
+```typescript
+.orderBy("totalAverageWeightRatings", "desc")
+.orderBy("numberOfRents", "desc")
+.orderBy("recentlyActive", "desc")
+.limit(limit)
+```
+You must create a **composite index** in Firestore.
+
+#### **How to Create the Index Manually**
+1. **Go to Firebase Console** → [Firestore Database](https://console.firebase.google.com/)
+2. Click **Indexes** in the left panel
+3. Click **Create Index**
+4. Set the index fields as follows:
+   | Field Name                     | Order  |
+   |--------------------------------|--------|
+   | `totalAverageWeightRatings`    | Descending |
+   | `numberOfRents`                | Descending |
+   | `recentlyActive`               | Descending |
+
+5. Click **Create** and wait for Firestore to build the index.
+
+---
+
+### **Alternative: Deploy Index Using Firestore Rules (`firestore.indexes.json`)**
+If you're using Firebase CLI, add this to your `firestore.indexes.json`:
+```json
+{
+  "indexes": [
+    {
+      "collectionGroup": "USERS",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "totalAverageWeightRatings", "order": "DESCENDING" },
+        { "fieldPath": "numberOfRents", "order": "DESCENDING" },
+        { "fieldPath": "recentlyActive", "order": "DESCENDING" }
+      ]
+    }
+  ]
+}
+```
+Then, deploy the indexes using:
+```bash
+firebase deploy --only firestore:indexes
+```
+
+---
+
+### ✅ **Why is This Necessary?**
+- Firestore **does not support multiple `orderBy` without an index**.
+- **Composite indexes** allow complex queries with multiple sort fields.
+- **Performance optimization** for sorting & pagination.
+
 Happy coding! 🚀
 
 ## Question Interview 
