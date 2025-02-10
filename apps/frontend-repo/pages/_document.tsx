@@ -3,7 +3,10 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <title>My App</title>
+        <meta name="description" content="A great app" />
+      </Head>
       <body className="antialiased">
         <Main />
         <NextScript />
