@@ -1,14 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 
-const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization;
+const authMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const token = req.headers.authorization;
 
-  // Simple Validation Token is Required
-  if (!token) {
-    return res.status(401).send('Unauthorized');
+    if (!token) {
+      res.status(401).send('Token must be provided');
+      return;
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
-  
-  next();
+
 };
 
 export default authMiddleware;
