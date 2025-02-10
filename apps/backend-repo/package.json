@@ -4,6 +4,7 @@
   "main": "core/app.ts",
   "scripts": {
     "start": "ts-node core/app.ts",
+    "gen:mock": "ts-node --transpile-only config/seed.ts",
     "dev": "ts-node-dev --respawn --transpile-only core/app.ts"
   },
   "dependencies": {

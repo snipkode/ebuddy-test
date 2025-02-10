@@ -33,7 +33,11 @@ This project is a **monorepo** setup using **Turbo.build**, integrating **Node.j
 3. Add Firebase **service account key**:
    - Place `serviceAccountKey.json` inside `apps/backend-repo/firebase/`.
    - This file is required to authenticate Firebase Admin SDK.
-4. Run the backend:
+4. Generate Users Mock Dummy from backend:
+   ```sh
+   npm run gen:mock
+   ```
+5. Run the backend:
    ```sh
    npm run dev
    ```
